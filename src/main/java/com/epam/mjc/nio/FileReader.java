@@ -7,14 +7,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class FileReader {
-    public Profile profile;
-    public String name;
-    public int age;
-    public String email;
-    public Long phone;
 
     public Profile getDataFromFile(File file) {
         Path path = file.toPath();
+        Profile profile = new Profile();
+        String name = "";
+        int age = 0;
+        String email = "";
+        long phone = 0L;
+
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -42,12 +43,5 @@ public class FileReader {
             ex.printStackTrace();
         }
         return profile;
-    }
-
-    public static void main(String[] args) {
-        FileReader fr = new FileReader();
-        Path path = Path.of("src/main/resources/Profile.txt");
-        File file = path.toFile();
-        System.out.println(fr.getDataFromFile(file));
     }
 }
