@@ -7,14 +7,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class FileReader {
+    public Profile profile;
+    public String name;
+    public int age;
+    public String email;
+    public Long phone;
 
     public Profile getDataFromFile(File file) {
         Path path = file.toPath();
-        Profile profile = null;
-        String name = "";
-        int age = 0;
-        String email = "";
-        long phone = 0L;
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             String line;
             while ((line = reader.readLine()) != null) {
